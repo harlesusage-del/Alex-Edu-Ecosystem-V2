@@ -1259,7 +1259,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // PWA REGISTER
 if ("serviceWorker" in navigator) {
-navigator.serviceWorker.register("sw.js")
-.then(() => console.log("PWA ready"))
-.catch(() => console.log("PWA failed"));
+window.addEventListener("load", () => {
+navigator.serviceWorker.register("./sw.js")
+.then(() => console.log("PWA installed"))
+.catch(err => console.log(err));
+});
 }
