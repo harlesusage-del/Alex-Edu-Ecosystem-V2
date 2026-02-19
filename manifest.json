@@ -1,7 +1,7 @@
 {
   "name": "Alex Academy Ecosystem",
   "short_name": "AlexOS",
-  "start_url": "index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#030508",
   "theme_color": "#030508"
