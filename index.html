@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Academy Ecosystem</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- BOOT SCREEN -->
+<div id="boot-screen">
+  <div class="boot-starfield" id="boot-starfield"></div>
+  <div class="boot-content">
+    <div class="boot-logo">AAE</div>
+    <div class="boot-terminal" id="boot-terminal">
+      <span id="boot-text"></span><span class="cursor" id="boot-cursor">_</span>
+    </div>
+  </div>
+</div>
+
+<!-- IDENTITY INPUT SCREEN -->
+<div id="identity-screen" class="hidden">
+  <div class="id-bg"></div>
+  <div class="id-content">
+    <div class="id-system-label">ALEX ACADEMY ECOSYSTEM</div>
+    <div class="id-title">Identify Yourself</div>
+    <div class="id-subtitle">Enter your name to initialize your personal academic environment</div>
+    <div class="id-form">
+      <input type="text" id="name-input" placeholder="Your full name..." autocomplete="off" spellcheck="false">
+      <button id="name-submit" type="button">
+        <span>Initialize</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN OS -->
+<div id="main-os" class="hidden">
+
+  <!-- STARFIELD BG -->
+  <canvas id="starfield-canvas"></canvas>
+
+  <!-- NOISE OVERLAY -->
+  <div class="noise-overlay"></div>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="system-sig">AAE</div>
+      <div class="temporal-display">
+        <div class="temporal-date" id="temporal-date">—</div>
+        <div class="temporal-time" id="temporal-time">—</div>
+      </div>
+    </div>
+    <div class="top-bar-right">
+      <div class="energy-badge" id="energy-badge">—</div>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SIDE PANEL -->
+  <div class="side-overlay" id="side-overlay"></div>
+  <nav class="side-panel" id="side-panel">
+    <div class="side-panel-header">
+      <div class="side-panel-title">Navigation</div>
+      <button class="side-close" id="side-close">✕</button>
+    </div>
+    <ul class="side-nav">
+      <li><button class="nav-btn active" data-view="dashboard">
+        <span class="nav-icon">◈</span> Dashboard
+      </button></li>
+      <li><button class="nav-btn" data-view="weekly">
+        <span class="nav-icon">⬚</span> Weekly View
+      </button></li>
+      <li><button class="nav-btn" data-view="focus">
+        <span class="nav-icon">◎</span> Focus Mode
+      </button></li>
+      <li><button class="nav-btn" data-view="metrics">
+        <span class="nav-icon">◉</span> Metrics
+      </button></li>
+      <li><button class="nav-btn" data-view="export">
+        <span class="nav-icon">⇅</span> Export / Import
+      </button></li>
+      <li><button class="nav-btn" data-view="settings">
+        <span class="nav-icon">◌</span> Settings
+      </button></li>
+    </ul>
+    <div class="side-panel-footer">
+      <div class="side-version">v2026.1 · Genap</div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="os-content">
+
+    <!-- DASHBOARD VIEW -->
+    <div class="view active" id="view-dashboard">
+
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="hero-greeting" id="hero-greeting">Welcome back, —</div>
+        <div class="hero-system-name">Alex Academy Ecosystem</div>
+        <div class="hero-semester">Academic Year 2025/2026 · Semester Genap</div>
+      </section>
+
+      <!-- GRID LAYOUT -->
+      <div class="dashboard-grid">
+
+        <!-- NEXT CLASS CARD -->
+        <div class="card card-next-class reveal-item">
+          <div class="card-label">NEXT CLASS</div>
+          <div class="next-class-subject" id="next-class-subject">—</div>
+          <div class="next-class-meta" id="next-class-meta">—</div>
+          <div class="next-class-countdown" id="next-class-countdown">—</div>
+          <div class="next-class-location" id="next-class-location">—</div>
+          <div class="card-progress-bar"><div class="card-progress-fill" id="class-progress-fill"></div></div>
+        </div>
+
+        <!-- TEMPORAL CARD -->
+        <div class="card card-temporal reveal-item">
+          <div class="card-label">TEMPORAL ENGINE</div>
+          <div class="temporal-big-time" id="temporal-big-time">00:00:00</div>
+          <div class="temporal-big-date" id="temporal-big-date">—</div>
+          <div class="temporal-fields">
+            <div class="t-field"><span class="t-label">Hari</span><span class="t-val" id="t-hari">—</span></div>
+            <div class="t-field"><span class="t-label">Tanggal</span><span class="t-val" id="t-tanggal">—</span></div>
+            <div class="t-field"><span class="t-label">Bulan</span><span class="t-val" id="t-bulan">—</span></div>
+            <div class="t-field"><span class="t-label">Tahun</span><span class="t-val" id="t-tahun">—</span></div>
+          </div>
+        </div>
+
+        <!-- INTELLIGENCE PANEL -->
+        <div class="card card-intel reveal-item">
+          <div class="card-label">ACADEMIC INTELLIGENCE</div>
+          <div class="intel-grid">
+            <div class="intel-item">
+              <div class="intel-val" id="intel-sks">0</div>
+              <div class="intel-label">Total SKS</div>
+            </div>
+            <div class="intel-item">
+              <div class="intel-val" id="intel-subjects">0</div>
+              <div class="intel-label">Mata Kuliah</div>
+            </div>
+            <div class="intel-item">
+              <div class="intel-val" id="intel-today-hours">0j</div>
+              <div class="intel-label">Hari Ini</div>
+            </div>
+            <div class="intel-item">
+              <div class="intel-val" id="intel-weekly-hours">0j</div>
+              <div class="intel-label">Per Minggu</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TODAY SCHEDULE -->
+        <div class="card card-today reveal-item">
+          <div class="card-label">JADWAL HARI INI</div>
+          <div class="today-schedule-list" id="today-schedule-list">
+            <div class="empty-state">Tidak ada kelas hari ini</div>
+          </div>
+        </div>
+
+        <!-- ENERGY STATE -->
+        <div class="card card-energy reveal-item">
+          <div class="card-label">ACADEMIC ENERGY STATE</div>
+          <div class="energy-message" id="energy-message">—</div>
+          <div class="energy-update-time" id="energy-update-time">—</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- WEEKLY VIEW -->
+    <div class="view" id="view-weekly">
+      <div class="view-header">
+        <div class="view-title">Weekly Structure</div>
+        <div class="view-subtitle">Semester Genap 2025/2026</div>
+      </div>
+      <div class="weekly-grid" id="weekly-grid"></div>
+    </div>
+
+    <!-- FOCUS MODE VIEW -->
+    <div class="view" id="view-focus">
+      <div class="view-header">
+        <div class="view-title">Focus Mode</div>
+        <div class="view-subtitle">Deep Work System</div>
+      </div>
+      <div class="focus-layout">
+        <div class="focus-timer-container">
+          <div class="focus-ring-outer">
+            <svg class="focus-ring-svg" viewBox="0 0 200 200">
+              <circle class="focus-ring-bg" cx="100" cy="100" r="88"/>
+              <circle class="focus-ring-prog" id="focus-ring-prog" cx="100" cy="100" r="88"/>
+            </svg>
+            <div class="focus-timer-display">
+              <div class="focus-time" id="focus-time-display">50:00</div>
+              <div class="focus-state" id="focus-state-label">Ready</div>
+            </div>
+          </div>
+          <div class="focus-controls">
+            <button class="focus-btn focus-btn-primary" id="focus-start-btn">Start Session</button>
+            <button class="focus-btn focus-btn-secondary hidden" id="focus-pause-btn">Pause</button>
+            <button class="focus-btn focus-btn-danger hidden" id="focus-end-btn">End</button>
+          </div>
+          <div class="focus-duration-select" id="focus-duration-select">
+            <span class="focus-dur-label">Duration:</span>
+            <button class="dur-btn active" data-min="25">25m</button>
+            <button class="dur-btn" data-min="50">50m</button>
+            <button class="dur-btn" data-min="90">90m</button>
+          </div>
+        </div>
+        <div class="focus-history-panel">
+          <div class="panel-label">SESSION HISTORY</div>
+          <div class="focus-history-list" id="focus-history-list">
+            <div class="empty-state">No sessions recorded</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- METRICS VIEW -->
+    <div class="view" id="view-metrics">
+      <div class="view-header">
+        <div class="view-title">System Metrics</div>
+        <div class="view-subtitle">Personal Academic Analytics</div>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon">✎</div>
+          <div class="metric-val" id="metric-notes">0</div>
+          <div class="metric-label">Total Notes</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">◎</div>
+          <div class="metric-val" id="metric-focus">0</div>
+          <div class="metric-label">Focus Sessions</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">⏱</div>
+          <div class="metric-val" id="metric-hours">0h</div>
+          <div class="metric-label">Study Hours</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">◈</div>
+          <div class="metric-val" id="metric-subjects-done">0</div>
+          <div class="metric-label">Classes Attended</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPORT/IMPORT VIEW -->
+    <div class="view" id="view-export">
+      <div class="view-header">
+        <div class="view-title">Data Management</div>
+        <div class="view-subtitle">Export · Import · Reset</div>
+      </div>
+      <div class="export-grid">
+        <div class="export-card">
+          <div class="export-icon">↑</div>
+          <div class="export-title">Export Data</div>
+          <div class="export-desc">Download all your academic data as JSON</div>
+          <button class="export-btn" id="export-btn">Export JSON</button>
+        </div>
+        <div class="export-card">
+          <div class="export-icon">↓</div>
+          <div class="export-title">Import Data</div>
+          <div class="export-desc">Restore from a previously exported file</div>
+          <button class="export-btn" id="import-btn">Import JSON</button>
+          <input type="file" id="import-file" accept=".json" style="display:none">
+        </div>
+        <div class="export-card export-card-danger">
+          <div class="export-icon">⚠</div>
+          <div class="export-title">Reset System</div>
+          <div class="export-desc">Clear all data and restart from boot. Cannot be undone.</div>
+          <button class="export-btn export-btn-danger" id="reset-btn">Reset System</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS VIEW -->
+    <div class="view" id="view-settings">
+      <div class="view-header">
+        <div class="view-title">System Settings</div>
+        <div class="view-subtitle">Personalize your environment</div>
+      </div>
+      <div class="settings-list">
+        <div class="setting-row">
+          <div class="setting-info">
+            <div class="setting-name">High Contrast</div>
+            <div class="setting-desc">Enhance visibility with stronger contrast ratios</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="setting-contrast">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-row">
+          <div class="setting-info">
+            <div class="setting-name">Large Text</div>
+            <div class="setting-desc">Increase base font size for readability</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="setting-fontsize">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-row">
+          <div class="setting-info">
+            <div class="setting-name">Reduce Motion</div>
+            <div class="setting-desc">Minimize animations and transitions</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="setting-motion">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-row">
+          <div class="setting-info">
+            <div class="setting-name">Browser Notifications</div>
+            <div class="setting-desc">Allow class reminders via system notifications</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="setting-notifications">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOCUS OVERLAY -->
+  <div class="focus-overlay hidden" id="focus-overlay"></div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- SUBJECT MODAL -->
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="subject-modal" id="subject-modal">
+      <div class="modal-header">
+        <div class="modal-subject-name" id="modal-subject-name">—</div>
+        <button class="modal-close" id="modal-close">✕</button>
+      </div>
+      <div class="modal-meta" id="modal-meta"></div>
+      <div class="modal-notes-section">
+        <div class="notes-header">
+          <div class="notes-title">Notes</div>
+          <div class="notes-stats" id="notes-stats">0 words · ~0 min read</div>
+        </div>
+        <textarea class="notes-textarea" id="notes-textarea" placeholder="Start writing your notes...&#10;&#10;Supports **bold** and *italic* markdown..."></textarea>
+        <div class="notes-footer">
+          <div class="notes-saved" id="notes-saved">Not saved</div>
+          <div class="notes-chars" id="notes-chars">0 / ∞</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOCUS FLOATING BUTTON -->
+  <button class="focus-fab" id="focus-fab" title="Enter Focus Mode">
+    <span>◎</span>
+  </button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
