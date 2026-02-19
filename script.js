@@ -1256,3 +1256,10 @@ const App = {
 document.addEventListener('DOMContentLoaded', () => {
   App.init();
 });
+
+// PWA REGISTER
+if ("serviceWorker" in navigator) {
+navigator.serviceWorker.register("sw.js")
+.then(() => console.log("PWA ready"))
+.catch(() => console.log("PWA failed"));
+}
